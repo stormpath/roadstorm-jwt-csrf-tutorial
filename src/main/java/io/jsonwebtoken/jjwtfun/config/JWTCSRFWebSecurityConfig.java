@@ -4,6 +4,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.jjwtfun.service.SecretService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -21,7 +22,8 @@ import java.io.IOException;
 import java.util.Arrays;
 
 @Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+@ConditionalOnProperty(name = {"jwt.csrf.token.repository.disabled"}, havingValue = "false", matchIfMissing = true)
+public class JWTCSRFWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     CsrfTokenRepository jwtCsrfTokenRepository;

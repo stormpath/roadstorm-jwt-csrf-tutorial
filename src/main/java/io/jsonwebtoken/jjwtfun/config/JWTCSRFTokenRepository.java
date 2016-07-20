@@ -14,14 +14,14 @@ import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.UUID;
 
-public class JWTCsrfTokenRepository implements CsrfTokenRepository {
+public class JWTCSRFTokenRepository implements CsrfTokenRepository {
 
     private static final String DEFAULT_CSRF_TOKEN_ATTR_NAME = CSRFConfig.class.getName().concat(".CSRF_TOKEN");
 
-    private static final Logger log = LoggerFactory.getLogger(JWTCsrfTokenRepository.class);
+    private static final Logger log = LoggerFactory.getLogger(JWTCSRFTokenRepository.class);
     private byte[] secret;
 
-    public JWTCsrfTokenRepository(byte[] secret) {
+    public JWTCSRFTokenRepository(byte[] secret) {
         this.secret = secret;
     }
 
