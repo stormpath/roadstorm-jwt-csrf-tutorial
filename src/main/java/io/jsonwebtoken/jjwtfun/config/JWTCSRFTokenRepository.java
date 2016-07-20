@@ -30,7 +30,7 @@ public class JWTCSRFTokenRepository implements CsrfTokenRepository {
         String id = UUID.randomUUID().toString().replace("-", "");
 
         Date now = new Date();
-        Date exp = new Date(System.currentTimeMillis() + (1000*30)); // 30 seconds
+        Date exp = new Date(now.getTime() + (1000*30)); // 30 seconds
 
         String token = Jwts.builder()
             .setId(id)
